@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Sylvia&#39;s blog</title>
+  <title>反爬虫策略 | Sylvia&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一勺辣酱, 五味人生">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sylvia&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="写在前面网站的反爬虫和服务器的反反爬虫策略斗争可以说很丰富了。为什么要反爬虫？    高频率、长时间的访问会给服务器带来较大负载压力，影响正常用户的使用，这一点也容易被用于恶意攻击 user-agent白名单headers(请求头)字段含义：headers用以客户端向服务器表明身份  Accept  客户端支持的响应数据类型   Accept-charset     客户端编码   Accept-">
+<meta name="keywords" content="爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反爬虫策略">
+<meta property="og:url" content="http://yoursite.com/2018/05/19/反爬虫策略/index.html">
 <meta property="og:site_name" content="Sylvia&#39;s blog">
-<meta property="og:description" content="一勺辣酱, 五味人生">
+<meta property="og:description" content="写在前面网站的反爬虫和服务器的反反爬虫策略斗争可以说很丰富了。为什么要反爬虫？    高频率、长时间的访问会给服务器带来较大负载压力，影响正常用户的使用，这一点也容易被用于恶意攻击 user-agent白名单headers(请求头)字段含义：headers用以客户端向服务器表明身份  Accept  客户端支持的响应数据类型   Accept-charset     客户端编码   Accept-">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-19T07:46:31.281Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sylvia&#39;s blog">
-<meta name="twitter:description" content="一勺辣酱, 五味人生">
+<meta name="twitter:title" content="反爬虫策略">
+<meta name="twitter:description" content="写在前面网站的反爬虫和服务器的反反爬虫策略斗争可以说很丰富了。为什么要反爬虫？    高频率、长时间的访问会给服务器带来较大负载压力，影响正常用户的使用，这一点也容易被用于恶意攻击 user-agent白名单headers(请求头)字段含义：headers用以客户端向服务器表明身份  Accept  客户端支持的响应数据类型   Accept-charset     客户端编码   Accept-">
   
     <link rel="alternative" href="/atom.xml" title="Sylvia&#39;s blog" type="application/atom+xml">
   
@@ -141,36 +143,108 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-反爬虫策略" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/19/反爬虫策略/" class="archive-article-date">
-  	<time datetime="2018-05-19T07:04:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/19/反爬虫策略/">反爬虫策略</a>
+    <h1 class="article-title" itemprop="name">
+      反爬虫策略
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/05/19/反爬虫策略/" class="archive-article-date">
+  	<time datetime="2018-05-19T07:04:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>网站的反爬虫和服务器的反反爬虫策略斗争可以说很丰富了。<br>为什么要反爬虫？  </p>
+<ul>
+<li><p>高频率、长时间的访问会给服务器带来较大负载压力，影响正常用户的使用，这一点也容易被用于恶意攻击</p>
+<h1 id="user-agent白名单"><a href="#user-agent白名单" class="headerlink" title="user-agent白名单"></a>user-agent白名单</h1><h3 id="headers-请求头-字段含义："><a href="#headers-请求头-字段含义：" class="headerlink" title="headers(请求头)字段含义："></a>headers(请求头)字段含义：</h3><p>headers用以客户端向服务器表明身份</p>
+</li>
+<li><p>Accept</p>
+<ul>
+<li>客户端支持的响应数据类型</li>
+</ul>
+</li>
+<li>Accept-charset    <ul>
+<li>客户端编码</li>
+</ul>
+</li>
+<li>Accept-encoding<ul>
+<li>客户端支持的响应数据压缩格式</li>
+</ul>
+</li>
+<li>Host<ul>
+<li>客户端请求的主机名</li>
+</ul>
+</li>
+<li>Referer<ul>
+<li>客户端从哪个资源访问服务器</li>
+</ul>
+</li>
+<li>user-agent        <ul>
+<li>客户端软件环境</li>
+</ul>
+</li>
+<li>Cookie</li>
+<li>Connection        <ul>
+<li>请求后的链接状态：keep-alive | close</li>
+</ul>
+</li>
+<li>Date             <ul>
+<li>客户端当前请求时间</li>
+</ul>
+</li>
+</ul>
+<p>最好随机生成user-agent<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 建立user-agent列表，每次请求时在其中随机选择</span></span><br><span class="line">agents = [<span class="string">'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0;'</span>,</span><br><span class="line">          <span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv,2.0.1) Gecko/20100101 Firefox/4.0.1'</span>,</span><br><span class="line">          <span class="string">'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; en) Presto/2.8.131 Version/11.11'</span>,</span><br><span class="line">          <span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11'</span>,</span><br><span class="line">          <span class="string">'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; 360SE)'</span>]</span><br><span class="line">headers[<span class="string">'User-agent'</span>] = agents[random.randint(<span class="number">0</span>, len(agents))]</span><br></pre></td></tr></table></figure></p>
+<h1 id="IP限制"><a href="#IP限制" class="headerlink" title="IP限制"></a>IP限制</h1><p>当客户端请求行为与正常用户差异较大时，eg.高访问频率，同一IP大量访问，这样的异常IP会被服务器加入黑名单<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 降低访问频次</span></span><br><span class="line">time.spleep(timeinterval)</span><br><span class="line"><span class="comment"># 设置IP代理池</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="js验证码"><a href="#js验证码" class="headerlink" title="js验证码"></a>js验证码</h1><p>可以采用OCR自动识别<br>(实习接触过一点OCR，有时间可以介绍一下)</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>有糖果吃的人生美滋滋<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/source/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/source/wechatpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -182,181 +256,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/19/反爬虫策略/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/19/爬虫/" class="archive-article-date">
-  	<time datetime="2018-05-19T06:46:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-19</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/19/爬虫/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">爬虫问题小结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/19/爬虫/">爬虫问题小结</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/18/hexo博客操作相关/" class="archive-article-date">
-  	<time datetime="2018-05-18T06:31:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/18/hexo博客操作相关/">hexo博客操作相关</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/18/vim使用/" class="archive-article-date">
-  	<time datetime="2018-05-18T05:50:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/18/vim使用/">vim使用</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/17/github-hexo搭建博客/" class="archive-article-date">
-  	<time datetime="2018-05-17T09:50:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/17/github-hexo搭建博客/">github + hexo搭建博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/17/博客创建成功测试/" class="archive-article-date">
-  	<time datetime="2018-05-17T05:47:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/17/博客创建成功测试/">博客创建成功测试</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/17/hello-world/" class="archive-article-date">
-  	<time datetime="2018-05-17T05:35:32.016Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/17/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -379,8 +378,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
