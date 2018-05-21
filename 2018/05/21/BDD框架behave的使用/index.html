@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 爬虫 | Sylvia&#39;s blog</title>
+  <title>BDD框架behave的使用 | Sylvia&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一勺辣酱, 五味人生">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sylvia&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/爬虫/index.html">
+  <meta name="description" content="behave介绍是基于python语言的BDD(behavior driven devepment，行为驱动开发)软件，官方说明文档 安装和使用支持pip安装通过命令行调用，但对windows系统而言，命令行+sublime容易引起编码问题(大神可忽略)，推荐使用pycharm，可以debug错误原因，需要pycharm专业版。 关键字与cucumber一致，在项目文件夹下建立feature文件，">
+<meta name="keywords" content="python,behave">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BDD框架behave的使用">
+<meta property="og:url" content="http://yoursite.com/2018/05/21/BDD框架behave的使用/index.html">
 <meta property="og:site_name" content="Sylvia&#39;s blog">
-<meta property="og:description" content="一勺辣酱, 五味人生">
+<meta property="og:description" content="behave介绍是基于python语言的BDD(behavior driven devepment，行为驱动开发)软件，官方说明文档 安装和使用支持pip安装通过命令行调用，但对windows系统而言，命令行+sublime容易引起编码问题(大神可忽略)，推荐使用pycharm，可以debug错误原因，需要pycharm专业版。 关键字与cucumber一致，在项目文件夹下建立feature文件，">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-21T10:50:49.297Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sylvia&#39;s blog">
-<meta name="twitter:description" content="一勺辣酱, 五味人生">
+<meta name="twitter:title" content="BDD框架behave的使用">
+<meta name="twitter:description" content="behave介绍是基于python语言的BDD(behavior driven devepment，行为驱动开发)软件，官方说明文档 安装和使用支持pip安装通过命令行调用，但对windows系统而言，命令行+sublime容易引起编码问题(大神可忽略)，推荐使用pycharm，可以debug错误原因，需要pycharm专业版。 关键字与cucumber一致，在项目文件夹下建立feature文件，">
   
     <link rel="alternative" href="/atom.xml" title="Sylvia&#39;s blog" type="application/atom+xml">
   
@@ -141,60 +143,187 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-BDD框架behave的使用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/19/反爬虫策略/" class="archive-article-date">
-  	<time datetime="2018-05-19T07:04:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/19/反爬虫策略/">反爬虫策略</a>
+    <h1 class="article-title" itemprop="name">
+      BDD框架behave的使用
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/05/21/BDD框架behave的使用/" class="archive-article-date">
+  	<time datetime="2018-05-21T10:29:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="behave介绍"><a href="#behave介绍" class="headerlink" title="behave介绍"></a>behave介绍</h1><p>是基于python语言的BDD(behavior driven devepment，行为驱动开发)软件，<br><a href="https://behave.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">官方说明文档</a></p>
+<h1 id="安装和使用"><a href="#安装和使用" class="headerlink" title="安装和使用"></a>安装和使用</h1><p>支持pip安装<br>通过命令行调用，但对windows系统而言，命令行+sublime容易引起编码问题(大神可忽略)，<br>推荐使用pycharm，可以debug错误原因，需要pycharm专业版。</p>
+<h1 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h1><p>与cucumber一致，在项目文件夹下建立feature文件，项目文件夹下的steps子文件中建立python文件，定义子节点的实现方式<br>一个feature对应一个.feature文件<br>一个feature可以包含多个scenario  </p>
+<h2 id="given"><a href="#given" class="headerlink" title="given"></a>given</h2><h2 id="when"><a href="#when" class="headerlink" title="when"></a>when</h2><h2 id="then"><a href="#then" class="headerlink" title="then"></a>then</h2><h2 id="and"><a href="#and" class="headerlink" title="and"></a>and</h2><h2 id="but"><a href="#but" class="headerlink" title="but"></a>but</h2><h1 id="场景模板"><a href="#场景模板" class="headerlink" title="场景模板"></a>场景模板</h1><p>scenario outline</p>
+<h1 id="节点注释"><a href="#节点注释" class="headerlink" title="节点注释"></a>节点注释</h1><p>context.text</p>
+<h1 id="context"><a href="#context" class="headerlink" title="context"></a>context</h1><p>新的feature和scenario的运行都会覆盖旧的context</p>
+<h1 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h1><p>context.table</p>
+<h1 id="parse-amp-cfparse"><a href="#parse-amp-cfparse" class="headerlink" title="parse &amp; cfparse"></a>parse &amp; cfparse</h1><h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>有糖果吃的人生美滋滋<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/source/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/source/wechatpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">behave</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/05/21/BDD框架behave的使用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/05/19/linux命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">linux命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -217,9 +346,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
