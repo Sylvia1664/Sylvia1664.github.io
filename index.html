@@ -335,47 +335,44 @@
         
           
             <p><a href="https://git-scm.com/" target="_blank" rel="noopener">官网</a></p>
-<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="设置提交代码时的用户信息"><a href="#设置提交代码时的用户信息" class="headerlink" title="设置提交代码时的用户信息"></a>设置提交代码时的用户信息</h3><p>git config [–global] user.name “[name]”<br>git config [–global] user.email “[email address]”<br>–global参数，表示这台机器上所有的Git仓库都会使用这个配置。</p>
-<h3 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h3><p>git init</p>
-<h3 id="创建ssh-key"><a href="#创建ssh-key" class="headerlink" title="创建ssh key"></a>创建ssh key</h3><p>本地Git仓库和github仓库之间的传输通过ssh加密的，远程服务器端需要添加ssh 公钥<br>默认在用户主目录下，生成.ssh目录，包含id_rsa和id_rsa.pub两个文件。id_rsa是私钥，id_rsa.pub是公钥<br>ssh-keygen  -t rsa –C “<a href="mailto:email@example.com" target="_blank" rel="noopener">email@example.com</a>“</p>
-<h3 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h3><p>本地：git clone /path/to/repository<br>远程：git clone username@host:/path/to/repository</p>
-<h3 id="关联本地仓库与远程仓库"><a href="#关联本地仓库与远程仓库" class="headerlink" title="关联本地仓库与远程仓库"></a>关联本地仓库与远程仓库</h3><p>git remote add origin <server></server></p>
-<h3 id="查看远程仓库信息"><a href="#查看远程仓库信息" class="headerlink" title="查看远程仓库信息"></a>查看远程仓库信息</h3><p>git remote -v<br>远程仓库的默认名称是origin</p>
-<h3 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h3><p>git status</p>
-<h3 id="添加改动到暂存区"><a href="#添加改动到暂存区" class="headerlink" title="添加改动到暂存区"></a>添加改动到暂存区</h3><p>git add <filename1> <filename2><br>git add .<br>“.”表示添加所有文件、文件夹和子文件夹</filename2></filename1></p>
-<h3 id="提交到仓库"><a href="#提交到仓库" class="headerlink" title="提交到仓库"></a>提交到仓库</h3><p>git commit -m “代码提交信息”</p>
-<h3 id="推送本地改动到远程"><a href="#推送本地改动到远程" class="headerlink" title="推送本地改动到远程"></a>推送本地改动到远程</h3><p>git push origin master</p>
-<h3 id="下载远程改动到本地"><a href="#下载远程改动到本地" class="headerlink" title="下载远程改动到本地"></a>下载远程改动到本地</h3><p>git fetch</p>
-<h3 id="合并拉取的代码"><a href="#合并拉取的代码" class="headerlink" title="合并拉取的代码"></a>合并拉取的代码</h3><p>git merge</p>
-<h3 id="拉取远程最新改动并与本地合并"><a href="#拉取远程最新改动并与本地合并" class="headerlink" title="拉取远程最新改动并与本地合并"></a>拉取远程最新改动并与本地合并</h3><p>git pull</p>
-<h3 id="图形化查看提交与改动"><a href="#图形化查看提交与改动" class="headerlink" title="图形化查看提交与改动"></a>图形化查看提交与改动</h3><p>gitk –all</p>
-<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>假设准备开发新功能，需要两周才能完成，如果立刻提交，代码没写完的情况下，不完整的代码库会导致其他人无法继续开发；而等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。<br>创建属于自己的分支，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。<br>鼓励<strong>使用分支完成某个任务，合并后再删掉分支</strong></p>
-<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><p>git branch feature_x<br>本地新建的分支如果不推送到远程，对其他人就是不可见的</p>
-<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p>git checkout master</p>
-<h3 id="创建并切换"><a href="#创建并切换" class="headerlink" title="创建并切换"></a>创建并切换</h3><p>git checkout -b feature_x</p>
-<h3 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h3><p>git branch</p>
-<h3 id="合并分支到当前分支"><a href="#合并分支到当前分支" class="headerlink" title="合并分支到当前分支"></a>合并分支到当前分支</h3><p>合并分支时，Git会优先用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。<br>如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息<br>git merge <branch><br>git merge –no-ff -m “merge with no-ff” <branch></branch></branch></p>
-<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><p>git branch -d feature_x<br>-D : 强行删除没有被合并过的分支</p>
-<h3 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h3><p>git push origin –delete [branch-name]<br>git branch -dr [remote/branch]</p>
-<h3 id="推送分支到远程仓库"><a href="#推送分支到远程仓库" class="headerlink" title="推送分支到远程仓库"></a>推送分支到远程仓库</h3><p>git push origin <branch></branch></p>
-<h3 id="查看文件、分支差异"><a href="#查看文件、分支差异" class="headerlink" title="查看文件、分支差异"></a>查看文件、分支差异</h3><p>git diff <filename><br>git diff &lt;source_branch&gt; &lt;target_branch&gt;<br>git diff HEAD – <filename>                      查看工作区和版本库里面最新版本的区别</filename></filename></p>
-<h3 id="列出分支"><a href="#列出分支" class="headerlink" title="列出分支"></a>列出分支</h3><p>本地：git branch<br>远程：git branch -r<br>所有：git branch -a</p>
-<h2 id="撤销修改与版本回退"><a href="#撤销修改与版本回退" class="headerlink" title="撤销修改与版本回退"></a>撤销修改与版本回退</h2><h3 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h3><p>git log<br>git log –stat<br>用以回退</p>
-<h3 id="查看命令历史"><a href="#查看命令历史" class="headerlink" title="查看命令历史"></a>查看命令历史</h3><p>git reflog<br>可以去未来</p>
-<h3 id="撤销工作区改动"><a href="#撤销工作区改动" class="headerlink" title="撤销工作区改动"></a>撤销工作区改动</h3><p>git checkout – <filename><br>会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。即回到最近一次git commit或git add时的状态</filename></p>
-<h3 id="撤销暂存区修改"><a href="#撤销暂存区修改" class="headerlink" title="撤销暂存区修改"></a>撤销暂存区修改</h3><p>git reset HEAD <filename><br>把暂存区的修改撤销掉（unstage），重新放回工作区</filename></p>
-<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><p>git reset –hard HEAD^<br>git reset –hard HEAD^^<br>git reset –hard HEAD~100</p>
-<h2 id="工作现场"><a href="#工作现场" class="headerlink" title="工作现场"></a>工作现场</h2><h3 id="隐藏工作现场"><a href="#隐藏工作现场" class="headerlink" title="隐藏工作现场"></a>隐藏工作现场</h3><p>git stash</p>
-<h3 id="查看被隐藏的工作现场"><a href="#查看被隐藏的工作现场" class="headerlink" title="查看被隐藏的工作现场"></a>查看被隐藏的工作现场</h3><p>git stash list</p>
-<h3 id="恢复工作现场"><a href="#恢复工作现场" class="headerlink" title="恢复工作现场"></a>恢复工作现场</h3><p>git stash apply<br>git stash pop        同时删除stash</p>
-<h3 id="删除stash"><a href="#删除stash" class="headerlink" title="删除stash"></a>删除stash</h3><p>git stash drop</p>
-<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><h3 id="创建标签在当前commit"><a href="#创建标签在当前commit" class="headerlink" title="创建标签在当前commit"></a>创建标签在当前commit</h3><p>git tag 1.0.0 版本号</p>
-<h3 id="列出所有tag"><a href="#列出所有tag" class="headerlink" title="列出所有tag"></a>列出所有tag</h3><p>git tag</p>
-<h3 id="删除本地tag"><a href="#删除本地tag" class="headerlink" title="删除本地tag"></a>删除本地tag</h3><p>git tag -d <tagname><br>创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除</tagname></p>
-<h3 id="推送标签到远程"><a href="#推送标签到远程" class="headerlink" title="推送标签到远程"></a>推送标签到远程</h3><p>git push origin <tagname>            推送一个本地标签<br>git push origin –tags                  推送全部未推送过的本地标签</tagname></p>
-<h3 id="删除远程标签"><a href="#删除远程标签" class="headerlink" title="删除远程标签"></a>删除远程标签</h3><p>先从本地删除，然后，从远程删除<br>git tag -d v0.9<br>git push origin :refs/tags/v0.9</p>
-<h2 id="自定义Git"><a href="#自定义Git" class="headerlink" title="自定义Git"></a>自定义Git</h2><h3 id="设置命令颜色显示"><a href="#设置命令颜色显示" class="headerlink" title="设置命令颜色显示"></a>设置命令颜色显示</h3><p>git config –global color.ui true</p>
-<h3 id="设置别名"><a href="#设置别名" class="headerlink" title="设置别名"></a>设置别名</h3><p>git config –global alias.st status</p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h2 id="1-基本操作"><a href="#1-基本操作" class="headerlink" title="1. 基本操作"></a>1. 基本操作</h2><p><strong>设置提交代码时的用户信息</strong><br>git config [–global] user.name “[name]”<br>git config [–global] user.email “[email address]”<br>–global参数，表示这台机器上所有的Git仓库都会使用这个配置。<br><strong>创建新仓库</strong><br>git init<br><strong>创建ssh key</strong><br>本地Git仓库和github仓库之间的传输通过ssh加密的，远程服务器端需要添加ssh 公钥<br>默认在用户主目录下，生成.ssh目录，包含id_rsa和id_rsa.pub两个文件。id_rsa是私钥，id_rsa.pub是公钥<br>ssh-keygen  -t rsa –C “<a href="mailto:email@example.com" target="_blank" rel="noopener">email@example.com</a>“<br><strong>克隆仓库</strong><br>本地：git clone /path/to/repository<br>远程：git clone username@host:/path/to/repository</p>
+<h5 id="关联本地仓库与远程仓库"><a href="#关联本地仓库与远程仓库" class="headerlink" title="关联本地仓库与远程仓库"></a>关联本地仓库与远程仓库</h5><p>git remote add origin <server></server></p>
+<h5 id="查看远程仓库信息"><a href="#查看远程仓库信息" class="headerlink" title="查看远程仓库信息"></a>查看远程仓库信息</h5><p>git remote -v<br>远程仓库的默认名称是origin</p>
+<h5 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h5><p>git status</p>
+<h5 id="添加改动到暂存区"><a href="#添加改动到暂存区" class="headerlink" title="添加改动到暂存区"></a>添加改动到暂存区</h5><p>git add <filename1> <filename2><br>git add .<br>“.”表示添加所有文件、文件夹和子文件夹</filename2></filename1></p>
+<h5 id="提交到仓库"><a href="#提交到仓库" class="headerlink" title="提交到仓库"></a>提交到仓库</h5><p>git commit -m “代码提交信息”</p>
+<h5 id="推送本地改动到远程"><a href="#推送本地改动到远程" class="headerlink" title="推送本地改动到远程"></a>推送本地改动到远程</h5><p>git push origin master</p>
+<h5 id="下载远程改动到本地"><a href="#下载远程改动到本地" class="headerlink" title="下载远程改动到本地"></a>下载远程改动到本地</h5><p>git fetch</p>
+<h5 id="合并拉取的代码"><a href="#合并拉取的代码" class="headerlink" title="合并拉取的代码"></a>合并拉取的代码</h5><p>git merge</p>
+<h5 id="拉取远程最新改动并与本地合并"><a href="#拉取远程最新改动并与本地合并" class="headerlink" title="拉取远程最新改动并与本地合并"></a>拉取远程最新改动并与本地合并</h5><p>git pull</p>
+<h5 id="图形化查看提交与改动"><a href="#图形化查看提交与改动" class="headerlink" title="图形化查看提交与改动"></a>图形化查看提交与改动</h5><p>gitk –all</p>
+<h2 id="2-分支"><a href="#2-分支" class="headerlink" title="2. 分支"></a>2. 分支</h2><p>假设准备开发新功能，需要两周才能完成，如果立刻提交，代码没写完的情况下，不完整的代码库会导致其他人无法继续开发；而等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。<br>创建属于自己的分支，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。<br>鼓励<strong>使用分支完成某个任务，合并后再删掉分支</strong></p>
+<h5 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h5><p>git branch feature_x<br>本地新建的分支如果不推送到远程，对其他人就是不可见的</p>
+<h5 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h5><p>git checkout master</p>
+<h5 id="创建并切换"><a href="#创建并切换" class="headerlink" title="创建并切换"></a>创建并切换</h5><p>git checkout -b feature_x</p>
+<h5 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h5><p>git branch</p>
+<h5 id="合并分支到当前分支"><a href="#合并分支到当前分支" class="headerlink" title="合并分支到当前分支"></a>合并分支到当前分支</h5><p>合并分支时，Git会优先用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。<br>如果要强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息<br>git merge <branch><br>git merge –no-ff -m “merge with no-ff” <branch></branch></branch></p>
+<h5 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h5><p>git branch -d feature_x<br>-D : 强行删除没有被合并过的分支</p>
+<h5 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h5><p>git push origin –delete [branch-name]<br>git branch -dr [remote/branch]</p>
+<h5 id="推送分支到远程仓库"><a href="#推送分支到远程仓库" class="headerlink" title="推送分支到远程仓库"></a>推送分支到远程仓库</h5><p>git push origin <branch></branch></p>
+<h5 id="查看文件、分支差异"><a href="#查看文件、分支差异" class="headerlink" title="查看文件、分支差异"></a>查看文件、分支差异</h5><p>git diff <filename><br>git diff &lt;source_branch&gt; &lt;target_branch&gt;<br>git diff HEAD – <filename>                      查看工作区和版本库里面最新版本的区别</filename></filename></p>
+<h5 id="列出分支"><a href="#列出分支" class="headerlink" title="列出分支"></a>列出分支</h5><p>本地：git branch<br>远程：git branch -r<br>所有：git branch -a</p>
+<h2 id="3-撤销修改与版本回退"><a href="#3-撤销修改与版本回退" class="headerlink" title="3. 撤销修改与版本回退"></a>3. 撤销修改与版本回退</h2><h5 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h5><p>git log<br>git log –stat<br>用以回退</p>
+<h5 id="查看命令历史"><a href="#查看命令历史" class="headerlink" title="查看命令历史"></a>查看命令历史</h5><p>git reflog<br>可以去未来</p>
+<h5 id="撤销工作区改动"><a href="#撤销工作区改动" class="headerlink" title="撤销工作区改动"></a>撤销工作区改动</h5><p>git checkout – <filename><br>会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响。即回到最近一次git commit或git add时的状态</filename></p>
+<h5 id="撤销暂存区修改"><a href="#撤销暂存区修改" class="headerlink" title="撤销暂存区修改"></a>撤销暂存区修改</h5><p>git reset HEAD <filename><br>把暂存区的修改撤销掉（unstage），重新放回工作区</filename></p>
+<h5 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h5><p>git reset –hard HEAD^<br>git reset –hard HEAD^^<br>git reset –hard HEAD~100</p>
+<h2 id="3-工作现场"><a href="#3-工作现场" class="headerlink" title="3. 工作现场"></a>3. 工作现场</h2><h5 id="隐藏工作现场"><a href="#隐藏工作现场" class="headerlink" title="隐藏工作现场"></a>隐藏工作现场</h5><p>git stash</p>
+<h5 id="查看被隐藏的工作现场"><a href="#查看被隐藏的工作现场" class="headerlink" title="查看被隐藏的工作现场"></a>查看被隐藏的工作现场</h5><p>git stash list</p>
+<h5 id="恢复工作现场"><a href="#恢复工作现场" class="headerlink" title="恢复工作现场"></a>恢复工作现场</h5><p>git stash apply<br>git stash pop        同时删除stash</p>
+<h5 id="删除stash"><a href="#删除stash" class="headerlink" title="删除stash"></a>删除stash</h5><p>git stash drop</p>
+<h2 id="4-标签"><a href="#4-标签" class="headerlink" title="4. 标签"></a>4. 标签</h2><h5 id="创建标签在当前commit"><a href="#创建标签在当前commit" class="headerlink" title="创建标签在当前commit"></a>创建标签在当前commit</h5><p>git tag 1.0.0 版本号</p>
+<h5 id="列出所有tag"><a href="#列出所有tag" class="headerlink" title="列出所有tag"></a>列出所有tag</h5><p>git tag</p>
+<h5 id="删除本地tag"><a href="#删除本地tag" class="headerlink" title="删除本地tag"></a>删除本地tag</h5><p>git tag -d <tagname><br>创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除</tagname></p>
+<h5 id="推送标签到远程"><a href="#推送标签到远程" class="headerlink" title="推送标签到远程"></a>推送标签到远程</h5><p>git push origin <tagname>            推送一个本地标签<br>git push origin –tags                  推送全部未推送过的本地标签</tagname></p>
+<h5 id="删除远程标签"><a href="#删除远程标签" class="headerlink" title="删除远程标签"></a>删除远程标签</h5><p>先从本地删除，然后，从远程删除<br>git tag -d v0.9<br>git push origin :refs/tags/v0.9</p>
+<h2 id="5-自定义Git"><a href="#5-自定义Git" class="headerlink" title="5. 自定义Git"></a>5. 自定义Git</h2><h5 id="设置命令颜色显示"><a href="#设置命令颜色显示" class="headerlink" title="设置命令颜色显示"></a>设置命令颜色显示</h5><p>git config –global color.ui true</p>
+<h5 id="设置别名"><a href="#设置别名" class="headerlink" title="设置别名"></a>设置别名</h5><p>git config –global alias.st status</p>
 <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><ol>
 <li><strong>想要丢弃你所有的本地改动与提交，与远程最新改动保持一致</strong><br>可以到服务器上获取最新的版本并将你本地主分支指向到它：<br>git fetch origin<br>git reset –hard origin/master</li>
 <li><strong>已经在本地创建Git仓库，想在github创建相同的Git仓库，保证两个仓库远程同步（备份或远程协作）</strong><br>可以在远程创建空仓库，关联本地仓库与远程仓库，推送本地到远程<br>git remote add origin <server><br>git push -u origin master</server></li>
