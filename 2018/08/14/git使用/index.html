@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="多登录官网你会发现惊喜大陆 命令1. 基本操作设置提交代码时的用户信息12git config [--global] user.name &amp;quot;[name]&amp;quot;`git config [--global] user.email &amp;quot;[email address]&amp;quot;  –global参数，表示这台机器上所有的Git仓库都会使用这个配置。  创建新仓库git init创">
+<meta name="description" content="多登录官网你会发现惊喜大陆 命令1. 基本操作设置提交代码时的用户信息12git config [--global] user.name &quot;[name]&quot;`git config [--global] user.email &quot;[email address]&quot;  –global参数，表示这台机器上所有的Git仓库都会使用这个配置。  创建新仓库1git init 创建ssh key本地Git仓库和gi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git使用">
 <meta property="og:url" content="http://yoursite.com/2018/08/14/git使用/index.html">
 <meta property="og:site_name" content="Sylvia&#39;s blog">
-<meta property="og:description" content="多登录官网你会发现惊喜大陆 命令1. 基本操作设置提交代码时的用户信息12git config [--global] user.name &amp;quot;[name]&amp;quot;`git config [--global] user.email &amp;quot;[email address]&amp;quot;  –global参数，表示这台机器上所有的Git仓库都会使用这个配置。  创建新仓库git init创">
+<meta property="og:description" content="多登录官网你会发现惊喜大陆 命令1. 基本操作设置提交代码时的用户信息12git config [--global] user.name &quot;[name]&quot;`git config [--global] user.email &quot;[email address]&quot;  –global参数，表示这台机器上所有的Git仓库都会使用这个配置。  创建新仓库1git init 创建ssh key本地Git仓库和gi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-16T12:08:47.179Z">
+<meta property="og:updated_time" content="2018-08-16T12:12:45.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git使用">
-<meta name="twitter:description" content="多登录官网你会发现惊喜大陆 命令1. 基本操作设置提交代码时的用户信息12git config [--global] user.name &amp;quot;[name]&amp;quot;`git config [--global] user.email &amp;quot;[email address]&amp;quot;  –global参数，表示这台机器上所有的Git仓库都会使用这个配置。  创建新仓库git init创">
+<meta name="twitter:description" content="多登录官网你会发现惊喜大陆 命令1. 基本操作设置提交代码时的用户信息12git config [--global] user.name &quot;[name]&quot;`git config [--global] user.email &quot;[email address]&quot;  –global参数，表示这台机器上所有的Git仓库都会使用这个配置。  创建新仓库1git init 创建ssh key本地Git仓库和gi">
 
 
 
@@ -330,11 +330,12 @@
 
       
         <p>多登录<a href="https://git-scm.com/" target="_blank" rel="noopener">官网</a>你会发现惊喜大陆</p>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h2 id="1-基本操作"><a href="#1-基本操作" class="headerlink" title="1. 基本操作"></a>1. 基本操作</h2><p><strong>设置提交代码时的用户信息</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config [--global] user.name &quot;[name]&quot;`</span><br><span class="line">git config [--global] user.email &quot;[email address]&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h2 id="1-基本操作"><a href="#1-基本操作" class="headerlink" title="1. 基本操作"></a>1. 基本操作</h2><p><strong>设置提交代码时的用户信息</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config [--global] user.name "[name]"`</span><br><span class="line">git config [--global] user.email "[email address]"</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>–global参数，表示这台机器上所有的Git仓库都会使用这个配置。</p>
 </blockquote>
-<p><strong>创建新仓库</strong><br><code>git init</code><br><strong>创建ssh key</strong><br>本地Git仓库和github仓库之间的传输通过ssh加密的，远程服务器端需要添加ssh 公钥<br>默认在用户主目录下，生成.ssh目录，包含id_rsa和id_rsa.pub两个文件。id_rsa是私钥，id_rsa.pub是公钥<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen  -t rsa –C "email@example.com"</span><br></pre></td></tr></table></figure></p>
+<p><strong>创建新仓库</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></p>
+<p><strong>创建ssh key</strong><br>本地Git仓库和github仓库之间的传输通过ssh加密的，远程服务器端需要添加ssh 公钥<br>默认在用户主目录下，生成.ssh目录，包含id_rsa和id_rsa.pub两个文件。id_rsa是私钥，id_rsa.pub是公钥<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen  -t rsa –C "email@example.com"</span><br></pre></td></tr></table></figure></p>
 <p><strong>克隆仓库</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">本地：git clone /path/to/repository </span><br><span class="line">远程：git clone username@host:/path/to/repository</span><br></pre></td></tr></table></figure></p>
 <p><strong>关联本地仓库与远程仓库</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin &lt;server&gt;</span><br></pre></td></tr></table></figure></p>
 <p><strong>查看远程仓库信息</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure></p>
@@ -342,8 +343,8 @@
 <p>远程仓库的默认名称是origin</p>
 </blockquote>
 <p><strong> 查看状态</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></p>
-<p><strong>添加改动到暂存区</strong><br><code>git add &lt;filename1&gt; &lt;filename2&gt;
-git add .</code><br>“.”表示添加所有文件、文件夹和子文件夹<br><strong>提交到仓库</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m "代码提交信息"</span><br></pre></td></tr></table></figure></p>
+<p><strong>添加改动到暂存区</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;filename1&gt; &lt;filename2&gt;</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure></p>
+<p>“.”表示添加所有文件、文件夹和子文件夹<br><strong>提交到仓库</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m "代码提交信息"</span><br></pre></td></tr></table></figure></p>
 <p><strong>推送本地改动到远程</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure></p>
 <p><strong>下载远程改动到本地</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch</span><br></pre></td></tr></table></figure></p>
 <p><strong>合并拉取的代码</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge</span><br></pre></td></tr></table></figure></p>
