@@ -263,6 +263,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/27/golang操作数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sylvia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/27/golang操作数据库/" itemprop="url">golang操作数据库</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-27T11:24:58+08:00">
+                2018-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>go官方提供了database package，包含sql和sql/driver两个包，定义了操作数据库的接口。<br>而连接数据库的driver需要依赖第三方包</p>
+<h3 id="数据包"><a href="#数据包" class="headerlink" title="数据包"></a>数据包</h3><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"database/sql"</span></span><br><span class="line">    _ <span class="string">"github.com/go-sql-driver/mysql"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="数据库的连接与关闭"><a href="#数据库的连接与关闭" class="headerlink" title="数据库的连接与关闭"></a>数据库的连接与关闭</h3><p>sql.Open()不建立与数据库的任何连接，也不会验证驱动连接参数。相反，它只是准备数据库抽象以供以后使用.<br>函数原型如下，返回一个sql.DB指针<br><code>func Open(driverName, dataSourceName string) (*DB, error)</code></p>
+<ul>
+<li>driverName: 使用的驱动名. 这个名字其实就是数据库驱动注册到 database/sql 时所使用的名字.</li>
+<li>dataSourceName: 数据库连接信息，这个连接包含了数据库的用户名, 密码, 数据库主机以及需要连接的数据库名等信息.<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    db, err := sql.Open(<span class="string">"mysql"</span>,</span><br><span class="line">        <span class="string">"user:password@tcp(127.0.0.1:3306)/hello"</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">defer</span> db.Close()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>当真正进行第一次数据库查询操作时, 此时才会真正建立网络连接</p>
+</blockquote>
+<blockquote>
+<p>sql.DB的设计就是用来作为长连接使用的。不要频繁Open, Close。比较好的做法是，为每个不同的datastore建一个DB对象，保持这些对象Open。如果需要短连接，那么把DB作为参数传入function，而不要在function中Open和Close</p>
+</blockquote>
+<h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><h4 id="Prepare"><a href="#Prepare" class="headerlink" title="Prepare()"></a>Prepare()</h4><p>预编译语句，返回一个Stmt，Stmt对象可以执行Exec()、Query()、QueryRow()等操作<br>使用该方法的优势有</p>
+<ul>
+<li>可以实现自定义参数的查询</li>
+<li>比手动拼接字符串 SQL 语句高效</li>
+<li>可以防止SQL注入攻击<br>自定义参数的占位符为：在MySql中，参数占位符为？；PostgreSql中为$N,其中N为数字；SQLite接受这两者之一；在Oracle中占位符以冒号开始，并命名为:param1<h4 id="Exec"><a href="#Exec" class="headerlink" title="Exec()"></a>Exec()</h4><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">stmt, err := db.Prepare(<span class="string">"INSERT INTO users(name) VALUES(?)"</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line">res, err := stmt.Exec(<span class="string">"Dolly"</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line">lastId, err := res.LastInsertId()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line">rowCnt, err := res.RowsAffected()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line">log.Printf(<span class="string">"ID = %d, affected = %d\n"</span>, lastId, rowCnt)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Query"><a href="#Query" class="headerlink" title="Query()"></a>Query()</h4><p>执行 SQL 语句<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db, err := sql.Open(<span class="string">"mysql"</span>, <span class="string">"jesse:jesse@tcp(127.0.0.1:3306)/?charset=utf8"</span>) </span><br><span class="line">checkErr(err)</span><br><span class="line">db.Query(<span class="string">"drop database if exists tmpdb"</span>)</span><br><span class="line">db.Query(<span class="string">"create database tmpdb"</span>)</span><br><span class="line">db.Query(<span class="string">"use tmpdb"</span>)</span><br><span class="line">db.Query(<span class="string">"create table tmpdb.tmptab(c1 int, c2 varchar(20), c3 varchar(20))"</span>)</span><br><span class="line">db.Query(<span class="string">"insert into tmpdb.tmptab values(101, '姓名1', 'address1'), (102, '姓名2', 'address2'), (103, '姓名3', 'address3'), (104, '姓名4', 'address4')"</span>)</span><br><span class="line">db.Query(<span class="string">"delete from tmpdb.tmptab where c1 = 101"</span>)</span><br><span class="line">db.Close()</span><br></pre></td></tr></table></figure></p>
+<p>对查询操作</p>
+<ol>
+<li>调用 db.Query 执行 SQL 语句，返回一个 Rows 作为查询的结果</li>
+<li>通过 rows.Next() 迭代查询数据</li>
+<li>通过 rows.Scan() 读取查询到每一行数据</li>
+<li>调用 db.Close() 关闭查询<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> (</span><br><span class="line">    id <span class="keyword">int</span></span><br><span class="line">    name <span class="keyword">string</span></span><br><span class="line">)</span><br><span class="line">rows, err := db.Query(<span class="string">"select id, name from users where id = ?"</span>, <span class="number">1</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">defer</span> rows.Close()</span><br><span class="line"><span class="keyword">for</span> rows.Next() &#123;</span><br><span class="line">    err := rows.Scan(&amp;id, &amp;name)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125;</span><br><span class="line">    log.Println(id, name)</span><br><span class="line">&#125;</span><br><span class="line">err = rows.Err()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p><strong>用defer内置函数推迟了rows.Close()的执行</strong><br>每次db.Query操作后, 都建议调用rows.Close(). 因为 db.Query() 会从数据库连接池中获取一个连接, 这个底层连接在结果集(rows)未关闭前会被标记为处于繁忙状态。当遍历读到最后一条记录时，会发生一个内部EOF错误，自动调用rows.Close(),但如果提前退出循环，rows不会关闭，连接不会回到连接池中，连接也不会关闭, 则此连接会一直被占用. 因此通常我们使用 defer rows.Close() 来确保数据库连接可以正确放回到连接池中</p>
+</blockquote>
+<h4 id="QueryRow"><a href="#QueryRow" class="headerlink" title="QueryRow()"></a>QueryRow()</h4><p>单行查询<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name <span class="keyword">string</span></span><br><span class="line">err = db.QueryRow(<span class="string">"select name from users where id = ?"</span>, <span class="number">1</span>).Scan(&amp;name)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(name)</span><br></pre></td></tr></table></figure></p>
+<p>与Prepare()一起使用<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">stmt, err := db.Prepare(<span class="string">"select name from users where id = ?"</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> name <span class="keyword">string</span></span><br><span class="line">err = stmt.QueryRow(<span class="number">1</span>).Scan(&amp;name)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(name)</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/20/Nginx使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -334,7 +488,18 @@
       
         
           
-            
+            <p>反向代理</p>
+<p>当客户端发来HTTP请求时，Nginx不会立刻转发到上有服务器，而是把请求完整的接收后，再向上有服务器发起连接，把缓存的客户端请求转发到上游服务器。</p>
+<p>​        这种反向代理的方式，缺点是延长了一个请求的时间、增加了缓存；优点则是减轻了上游服务器的压力，因为外部请求的传输速度相对于内部转发较慢，缓存完外部请求后再请求上游服务器可以减少维持连接的时间，进而减轻了上游服务器的压力。</p>
+<p>/webserver/nginx/conf/nginx.conf示例配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">user  nobody;</span><br><span class="line">   worker_processes  1;</span><br><span class="line">   error_log  logs/error.log  info;</span><br><span class="line"></span><br><span class="line">   events &#123;</span><br><span class="line">       worker_connections  1024;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   http &#123;  </span><br><span class="line">       server &#123;  </span><br><span class="line">           listen          80;  </span><br><span class="line">           server_name     www.linuxidc.com;  </span><br><span class="line">           access_log      logs/linuxidc.access.log main;  </span><br><span class="line">           location / &#123;  </span><br><span class="line">               index index.html;  </span><br><span class="line">               root  /var/www/linuxidc.com/htdocs;  </span><br><span class="line">           &#125;  </span><br><span class="line">       &#125;  </span><br><span class="line"></span><br><span class="line">       server &#123;  </span><br><span class="line">           listen          80;  </span><br><span class="line">           server_name     www.Androidj.com;  </span><br><span class="line">           access_log      logs/androidj.access.log main;  </span><br><span class="line">           location / &#123;  </span><br><span class="line">               index index.html;  </span><br><span class="line">               root  /var/www/androidj.com/htdocs;  </span><br><span class="line">           &#125;  </span><br><span class="line">       &#125;  </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   mail &#123;</span><br><span class="line">       auth_http  127.0.0.1:80/auth.php;</span><br><span class="line">       pop3_capabilities  "TOP"  "USER";</span><br><span class="line">       imap_capabilities  "IMAP4rev1"  "UIDPLUS";</span><br><span class="line"></span><br><span class="line">       server &#123;</span><br><span class="line">           listen     110;</span><br><span class="line">           protocol   pop3;</span><br><span class="line">           proxy      on;</span><br><span class="line">       &#125;</span><br><span class="line">       server &#123;</span><br><span class="line">           listen      25;</span><br><span class="line">           protocol    smtp;</span><br><span class="line">           proxy       on;</span><br><span class="line">           smtp_auth   login plain;</span><br><span class="line">           xclient     off;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>存在于 main 上下文中的配置指令如下:<br>user<br>worker_processes<br>error_log<br>events<br>http<br>mail</p>
+<p>存在于 http 上下文中的指令如下:<br>server</p>
+<p>存在于 mail 上下文中的指令如下：<br>server<br>auth_http<br>imap_capabilities</p>
+<p>存在于 server 上下文中的配置指令如下：<br>listen<br>server_name<br>access_log<br>location<br>protocol<br>proxy<br>smtp_auth<br>xclient</p>
+<p>存在于 location 上下文中的指令如下：<br>index<br>root</p>
+<p>usr/local/webserver/nginx/sbin/nginx                        # 启动Nginx<br>usr/local/webserver/nginx/sbin/nginx -s reload             # 重新载入配置文件<br>usr/local/webserver/nginx/sbin/nginx -s reopen             # 重启 Nginx<br>usr/local/webserver/nginx/sbin/nginx -s stop             # 停止 Nginx</p>
+
           
         
       
@@ -1487,128 +1652,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/13/ssh连接错误/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sylvia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sylvia's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/13/ssh连接错误/" itemprop="url">ssh介绍</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-13T13:14:24+08:00">
-                2018-06-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="ssh是什么"><a href="#ssh是什么" class="headerlink" title="ssh是什么"></a>ssh是什么</h2><p>用于远程登录、应用层和传输层之间的安全协议</p>
-<h2 id="ssh远程操作"><a href="#ssh远程操作" class="headerlink" title="ssh远程操作"></a>ssh远程操作</h2><h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>ssh user@host<br>默认端口22</p>
-<h3 id="在远程主机上执行操作"><a href="#在远程主机上执行操作" class="headerlink" title="在远程主机上执行操作"></a>在远程主机上执行操作</h3><p><code>ssh user@host &#39;mkdir -p .ssh &amp;&amp; cat &gt;&gt; .ssh/authorized_keys&#39; &lt; ~/.ssh/id_rsa.pub</code></p>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="登录linux显示连接错误"><a href="#登录linux显示连接错误" class="headerlink" title="登录linux显示连接错误"></a>登录linux显示连接错误</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1659,7 +1702,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
