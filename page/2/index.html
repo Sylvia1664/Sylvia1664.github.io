@@ -263,6 +263,262 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/29/go语言关键字/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sylvia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/29/go语言关键字/" itemprop="url">go语言关键字</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-29T18:23:33+08:00">
+                2018-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="package"><a href="#package" class="headerlink" title="package"></a>package</h2><blockquote>
+<p> 指定.go文件属于哪个包</p>
+</blockquote>
+<ul>
+<li>在源文件非注释的第一行指定该.go文件属于哪一个包</li>
+<li>包名小写</li>
+<li>一个go应用程序的源文件可以属于不同的包</li>
+<li>一个go应用程序必须包含一个属于main的源文件<blockquote>
+<p>属于同一个包的源文件必须全部被一起编译，每个目录都只包含一个包<br>一个包即是编译时的一个单元<br>当代码修改或重新编译时，引用这个包的其他程序必须全部编译</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/28/ElasticSearch简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sylvia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/28/ElasticSearch简介/" itemprop="url">ElasticSearch简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-28T18:54:57+08:00">
+                2018-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>es是为<strong>提高搜索效率</strong>而存在的一种分布式引擎，它支持文档型数据，采用json形式保存，其中的概念和关系型数据库的对应关系为：</p>
+<blockquote>
+<p>关系数据库 ⇒ 数据库(Database) ⇒ 表(Table) ⇒ 行(Row) ⇒ 列(Columns)<br>Elasticsearch ⇒ 索引(Index) ⇒ 类型(Type) ⇒ 文档(Document) ⇒ 字段(Fields)</p>
+</blockquote>
+<p>关系型数据库采用<strong>树</strong>结构存储，因为二叉树的查找复杂度为logN，并且在插入时不用移动全部节点，可以同时兼顾查询和插入的性能</p>
+<p>es采用<strong>倒排索引</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/22/多线程爬虫在linux下保存路径错误/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1300,156 +1556,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/17/github-hexo搭建博客/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sylvia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sylvia's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/17/github-hexo搭建博客/" itemprop="url">github + hexo搭建博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-17T17:50:11+08:00">
-                2018-05-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>工作之后很难有大量的时间专注于学习或者研究某个内容， 每天的杂事很多，不知道时间如何流逝，于是有了想要写博客的念头。<br>初步目标是在每日工作后，总结今天学习或者新理解的东西。</p>
-<h1 id="hexo-github搭建博客方法"><a href="#hexo-github搭建博客方法" class="headerlink" title="hexo + github搭建博客方法"></a>hexo + github搭建博客方法</h1><p><a href="https://zhangslob.github.io/2017/02/28/%E6%95%99%E4%BD%A0%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%8CHexo-Github/" target="_blank" rel="noopener">参考博客</a><br>这一篇足够了，条理很清楚，对技术宅而言就更简单了。<br>基本是hexo + git + cmder，如果都有了解，半小时不到完全可以搞定  </p>
-<p><strong>补充注意点</strong>：<br><code>hexo命令</code> 需要在blog文件夹下执行  </p>
-<h1 id="cmder"><a href="#cmder" class="headerlink" title="cmder"></a>cmder</h1><ul>
-<li><strong>作用</strong>：cmd的美化版</li>
-<li><strong>使用方法</strong>：官网下载–解压–运行.exe</li>
-<li><strong>优点</strong>：支持linux命令以及好看: )  </li>
-<li><strong>加入右键菜单方法：</strong><ul>
-<li>添加环境变量  </li>
-<li>终端运行命令： cmd.exe /REGISTER ALL</li>
-</ul>
-</li>
-</ul>
-<h1 id="博客主题"><a href="#博客主题" class="headerlink" title="博客主题"></a>博客主题</h1><p> <a href="https://zhangslob.github.io/2017/02/28/%E6%95%99%E4%BD%A0%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%8CHexo-Github/" target="_blank" rel="noopener">上述搭建博客的帖子中</a>给出了<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">github上的一个主题样例</a>  知乎有相关的<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="noopener">问题贴</a></p>
-<h1 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h1><p><a href="https://www.jianshu.com/p/0130ad32a08d" target="_blank" rel="noopener">语法参考</a></p>
-<h1 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h1><ul>
-<li>支持markdown插件<ul>
-<li>Ctrl + Shift + P</li>
-<li>安装package control:输入install，选择package control</li>
-<li>package control中输入install package</li>
-<li>安装markdown插件：Markdown Editing和MarkdownLivePreview</li>
-</ul>
-</li>
-<li>最好设置管理员模式运行 (右键属性勾选管理员模式运行)</li>
-</ul>
-<h1 id="博客使用"><a href="#博客使用" class="headerlink" title="博客使用"></a>博客使用</h1><p><code>hexo new &quot;blog name&quot;</code><br><code>hexo generate</code><br><code>hexo server</code><br><code>hexo deploy</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1495,7 +1606,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

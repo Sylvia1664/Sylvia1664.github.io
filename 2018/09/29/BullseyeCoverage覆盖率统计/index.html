@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="测试经验在测试前，列出关键测试点考虑测试项需要的执行时间，有效、合理的安排查看log是个好习惯不能放过每一个”感觉上”不合理的地方每个测试都充分思考：这个能否自动化，如何自动化">
+<meta name="description" content="BullseyeCoverage（以下称ccvoer）是由Bullseye提供的C/C++代码覆盖率测试工具，可统计：函数、分支、类覆盖率，可用于单测，自动化测试等测试阶段的覆盖率统计工作中，是一种有效的发现未被测试覆盖的代码的手段 原理ccover采用的是先对代码进行插桩，然后收集覆盖数据，最后分析覆盖率原理的技术。其工作原理是：编译插桩：针对不同的编译器，设计一个和真实编译器名字相同的拦截器，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试总结">
-<meta property="og:url" content="http://yoursite.com/2018/05/29/测试总结/index.html">
+<meta property="og:title" content="BullseyeCoverage覆盖率统计">
+<meta property="og:url" content="http://yoursite.com/2018/09/29/BullseyeCoverage覆盖率统计/index.html">
 <meta property="og:site_name" content="Sylvia&#39;s blog">
-<meta property="og:description" content="测试经验在测试前，列出关键测试点考虑测试项需要的执行时间，有效、合理的安排查看log是个好习惯不能放过每一个”感觉上”不合理的地方每个测试都充分思考：这个能否自动化，如何自动化">
+<meta property="og:description" content="BullseyeCoverage（以下称ccvoer）是由Bullseye提供的C/C++代码覆盖率测试工具，可统计：函数、分支、类覆盖率，可用于单测，自动化测试等测试阶段的覆盖率统计工作中，是一种有效的发现未被测试覆盖的代码的手段 原理ccover采用的是先对代码进行插桩，然后收集覆盖数据，最后分析覆盖率原理的技术。其工作原理是：编译插桩：针对不同的编译器，设计一个和真实编译器名字相同的拦截器，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-26T03:21:38.995Z">
+<meta property="og:updated_time" content="2018-10-17T13:20:15.672Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试总结">
-<meta name="twitter:description" content="测试经验在测试前，列出关键测试点考虑测试项需要的执行时间，有效、合理的安排查看log是个好习惯不能放过每一个”感觉上”不合理的地方每个测试都充分思考：这个能否自动化，如何自动化">
+<meta name="twitter:title" content="BullseyeCoverage覆盖率统计">
+<meta name="twitter:description" content="BullseyeCoverage（以下称ccvoer）是由Bullseye提供的C/C++代码覆盖率测试工具，可统计：函数、分支、类覆盖率，可用于单测，自动化测试等测试阶段的覆盖率统计工作中，是一种有效的发现未被测试覆盖的代码的手段 原理ccover采用的是先对代码进行插桩，然后收集覆盖数据，最后分析覆盖率原理的技术。其工作原理是：编译插桩：针对不同的编译器，设计一个和真实编译器名字相同的拦截器，">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/29/测试总结/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/29/BullseyeCoverage覆盖率统计/"/>
 
 
 
 
 
-  <title>测试总结 | Sylvia's blog</title>
+  <title>BullseyeCoverage覆盖率统计 | Sylvia's blog</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/测试总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/29/BullseyeCoverage覆盖率统计/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Sylvia">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">测试总结</h1>
+          <h1 class="post-title" itemprop="name headline">BullseyeCoverage覆盖率统计</h1>
         
 
         <div class="post-meta">
@@ -291,8 +291,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-29T16:52:36+08:00">
-                2018-05-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-29T19:36:45+08:00">
+                2018-09-29
               </time>
             
 
@@ -329,7 +329,23 @@
       
 
       
-        <h1 id="测试经验"><a href="#测试经验" class="headerlink" title="测试经验"></a>测试经验</h1><p>在测试前，列出关键测试点<br>考虑测试项需要的执行时间，有效、合理的安排<br>查看log是个好习惯<br>不能放过每一个”感觉上”不合理的地方<br>每个测试都充分思考：这个能否自动化，如何自动化</p>
+        <p>BullseyeCoverage（以下称ccvoer）是由Bullseye提供的C/C++代码覆盖率测试工具，可统计：函数、分支、类覆盖率，可用于单测，自动化测试等测试阶段的覆盖率统计工作中，是一种有效的发现未被测试覆盖的代码的手段</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>ccover采用的是先对代码进行插桩，然后收集覆盖数据，最后分析覆盖率原理的技术。<br>其工作原理是：<br>编译插桩：针对不同的编译器，设计一个和真实编译器名字相同的拦截器，这些拦截器文件存放在 ccover的bin目录下。当覆盖编译开关打开时，文件在编译过程中将首先被这些拦截器所拦截，而不是由真实的编译器去编译源代码。在这个拦截过程中，拦截器将一系列探针代码插入到C／C++源代码中，即插桩过程，然后带有桩代码的文件再次通过真实的编译器生成可执行二进制文件和覆盖分析文件（test.cov），此时的二进制文件具备被ccover分析的条件，而插桩信息被记录在test.cov中。在当覆盖编译开关关闭时，这些拦截器将直接调用真实的编译器而不进行代码插桩的过程。<br>收集覆盖数据：运行测例过程中，被插桩后的二进制文件在执行时会将覆盖率信息写入test.cov。<br>分析覆盖率：采用covsrc等命令基于test.cov获取覆盖率统计数据。</p>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><ol>
+<li>下载源码并安装ccover</li>
+<li>声明ccover和使用的编译器路径</li>
+<li>开启覆盖率编译开关<br><code>cov01 -1</code></li>
+<li>声明覆盖分析文件的输出路径和名称，一般为test.cov</li>
+<li>获取被测试代码，编译</li>
+<li>关闭覆盖率编译开关<br><code>cov01 -0</code></li>
+<li>将编译后的可执行文件和输出的test.cov复制到测试代码目录下</li>
+<li>声明覆盖数据写入文件路径（复制后的test.cov）</li>
+<li>执行测试代码，覆盖率信息写入test.cov（如果不复制test.cov，会提示生成和使用的test.cov为同一文件）</li>
+<li>基于test.cov文件统计覆盖率</li>
+</ol>
+<h2 id="ccover命令"><a href="#ccover命令" class="headerlink" title="ccover命令"></a>ccover命令</h2><p>covdir 查看文件夹覆盖率<br>covsrc<br>查看文件覆盖率<br>covfn<br>查看函数覆盖率<br>covclass<br>查看类覆盖率<br>covbr<br>查看分支覆盖率</p>
+<p>covselect<br>文件过滤</p>
+<p>–&gt;       没有被执行到的函数、条件判断、switch、while/for、catch等<br>X         某个函数已被执行，并支持classs内的函数<br>T/t       某处条件判断为真<br>F/f       某处条件判断为假<br>TF/tf     某处条件判断时，真假值都成立过<br>K         某处条件为常量</p>
 
       
     </div>
@@ -354,8 +370,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/21/BDD框架behave的使用/" rel="next" title="BDD框架behave的使用">
-                <i class="fa fa-chevron-left"></i> BDD框架behave的使用
+              <a href="/2018/09/11/leetcode-golang/" rel="next" title="leetcode--golang">
+                <i class="fa fa-chevron-left"></i> leetcode--golang
               </a>
             
           </div>
@@ -363,10 +379,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/13/ssh连接错误/" rel="prev" title="ssh介绍">
-                ssh介绍 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -491,7 +503,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#测试经验"><span class="nav-number">1.</span> <span class="nav-text">测试经验</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用步骤"><span class="nav-number">2.</span> <span class="nav-text">使用步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ccover命令"><span class="nav-number">3.</span> <span class="nav-text">ccover命令</span></a></li></ol></div>
             
 
           </div>

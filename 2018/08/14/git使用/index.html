@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Sylvia&#39;s blog">
 <meta property="og:description" content="官网 命令1. 基本操作设置提交代码时的用户信息12git config [--global] user.name &quot;[name]&quot;`git config [--global] user.email &quot;[email address]&quot;  –global参数，表示这台机器上所有的Git仓库都会使用这个配置。  创建新仓库1git init 创建ssh key本地Git仓库和github仓库之间的传输">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-20T08:41:16.717Z">
+<meta property="og:updated_time" content="2018-11-23T06:46:34.142Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git使用">
 <meta name="twitter:description" content="官网 命令1. 基本操作设置提交代码时的用户信息12git config [--global] user.name &quot;[name]&quot;`git config [--global] user.email &quot;[email address]&quot;  –global参数，表示这台机器上所有的Git仓库都会使用这个配置。  创建新仓库1git init 创建ssh key本地Git仓库和github仓库之间的传输">
@@ -361,8 +361,9 @@
 <p><strong>删除分支</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d feature_x</span><br></pre></td></tr></table></figure></p>
 <p>-D : 强行删除没有被合并过的分支<br><strong>删除远程分支</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete [branch-name]</span><br><span class="line">git branch -dr [remote/branch]</span><br></pre></td></tr></table></figure></p>
 <p><strong>推送分支到远程仓库</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin &lt;branch&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>查看文件、分支差异</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git diff &lt;filename&gt;</span><br><span class="line">git diff &lt;source_branch&gt; &lt;target_branch&gt;</span><br><span class="line">git diff HEAD -- &lt;filename&gt;  					查看工作区和版本库里面最新版本的区别</span><br></pre></td></tr></table></figure></p>
-<p><strong>列出分支</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本地：git branch</span><br><span class="line">远程：git branch -r</span><br><span class="line">所有：git branch -a</span><br></pre></td></tr></table></figure></p>
+<p><strong>查看文件、分支差异</strong><br><code>git diff</code>命令，不指定filename时，列出所有文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git diff &lt;filename&gt;						工作区和暂存区</span><br><span class="line">git diff &lt;branch_1&gt; &lt;branch_2&gt;			两个分支</span><br><span class="line">git diff --cached &lt;filename&gt;			暂存区和版本库最新版本</span><br><span class="line">git diff --cached &lt;commit&gt; &lt;filename&gt;	暂存区和版本库指定版本</span><br><span class="line">git diff &lt;commit&gt; &lt;filename&gt;			工作区和版本库指定版本</span><br><span class="line">git diff HEAD -- &lt;filename&gt;  			工作区和版本库里面最新版本（commit=HEAD）</span><br><span class="line">git diff &lt;commit&gt; &lt;commit&gt;				版本库两个版本</span><br></pre></td></tr></table></figure></p>
+<p>其中<code>&lt;commit&gt;</code>支持下列方式：<br><code>HEAD</code>        最经一次commit<br><code>HEAD^</code>        上一次提交<br><code>HEAD~100</code>    上100次提交<br>版本号<br><strong>列出分支</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本地：git branch</span><br><span class="line">远程：git branch -r</span><br><span class="line">所有：git branch -a</span><br></pre></td></tr></table></figure>
 <h2 id="3-撤销修改与版本回退"><a href="#3-撤销修改与版本回退" class="headerlink" title="3. 撤销修改与版本回退"></a>3. 撤销修改与版本回退</h2><p><strong>查看提交历史</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line">git log --stat</span><br></pre></td></tr></table></figure></p>
 <p>用以回退<br><strong>查看命令历史</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></p>
 <p>可以去未来<br><strong>撤销工作区改动</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- &lt;filename&gt;</span><br></pre></td></tr></table></figure></p>
@@ -527,7 +528,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

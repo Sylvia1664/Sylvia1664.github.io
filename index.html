@@ -263,6 +263,261 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/29/BullseyeCoverage覆盖率统计/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sylvia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/29/BullseyeCoverage覆盖率统计/" itemprop="url">BullseyeCoverage覆盖率统计</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-29T19:36:45+08:00">
+                2018-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>BullseyeCoverage（以下称ccvoer）是由Bullseye提供的C/C++代码覆盖率测试工具，可统计：函数、分支、类覆盖率，可用于单测，自动化测试等测试阶段的覆盖率统计工作中，是一种有效的发现未被测试覆盖的代码的手段</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>ccover采用的是先对代码进行插桩，然后收集覆盖数据，最后分析覆盖率原理的技术。<br>其工作原理是：<br>编译插桩：针对不同的编译器，设计一个和真实编译器名字相同的拦截器，这些拦截器文件存放在 ccover的bin目录下。当覆盖编译开关打开时，文件在编译过程中将首先被这些拦截器所拦截，而不是由真实的编译器去编译源代码。在这个拦截过程中，拦截器将一系列探针代码插入到C／C++源代码中，即插桩过程，然后带有桩代码的文件再次通过真实的编译器生成可执行二进制文件和覆盖分析文件（test.cov），此时的二进制文件具备被ccover分析的条件，而插桩信息被记录在test.cov中。在当覆盖编译开关关闭时，这些拦截器将直接调用真实的编译器而不进行代码插桩的过程。<br>收集覆盖数据：运行测例过程中，被插桩后的二进制文件在执行时会将覆盖率信息写入test.cov。<br>分析覆盖率：采用covsrc等命令基于test.cov获取覆盖率统计数据。</p>
+<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><ol>
+<li>下载源码并安装ccover</li>
+<li>声明ccover和使用的编译器路径</li>
+<li>开启覆盖率编译开关<br><code>cov01 -1</code></li>
+<li>声明覆盖分析文件的输出路径和名称，一般为test.cov</li>
+<li>获取被测试代码，编译</li>
+<li>关闭覆盖率编译开关<br><code>cov01 -0</code></li>
+<li>将编译后的可执行文件和输出的test.cov复制到测试代码目录下</li>
+<li>声明覆盖数据写入文件路径（复制后的test.cov）</li>
+<li>执行测试代码，覆盖率信息写入test.cov（如果不复制test.cov，会提示生成和使用的test.cov为同一文件）</li>
+<li>基于test.cov文件统计覆盖率</li>
+</ol>
+<h2 id="ccover命令"><a href="#ccover命令" class="headerlink" title="ccover命令"></a>ccover命令</h2><p>covdir 查看文件夹覆盖率<br>covsrc<br>查看文件覆盖率<br>covfn<br>查看函数覆盖率<br>covclass<br>查看类覆盖率<br>covbr<br>查看分支覆盖率</p>
+<p>covselect<br>文件过滤</p>
+<p>–&gt;       没有被执行到的函数、条件判断、switch、while/for、catch等<br>X         某个函数已被执行，并支持classs内的函数<br>T/t       某处条件判断为真<br>F/f       某处条件判断为假<br>TF/tf     某处条件判断时，真假值都成立过<br>K         某处条件为常量</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/11/leetcode-golang/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sylvia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sylvia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/11/leetcode-golang/" itemprop="url">leetcode--golang</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-11T20:24:45+08:00">
+                2018-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/11/golang-time包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -454,7 +709,7 @@
       
         
           
-            <p>facets是谷歌的开源数据可视化工具，可以从均值、缺失值以及分布形态等多方面对特征列进行分析和可视化展示，有利于初步掌握数据的分布和趋势。就像官网说的，，数据的清洗和过滤对模型起着至关重要的作用，通过facets对样本数据进行分析，可以尽早发现数据问题，例如缺失值过多，数据分布不均匀等，可以说是数据分析的第一步。<br>facets可以作为pandas库的辅助可视化工具，相信会事半功倍。<br><a href="https://pair-code.github.io/facets/" target="_blank" rel="noopener">官网</a><br><a href="https://zhuanlan.zhihu.com/p/35239326" target="_blank" rel="noopener">(知乎)介绍</a></p>
+            <p>facets是谷歌的开源数据可视化工具，可以从均值、缺失值以及分布形态等多方面对特征列进行分析和可视化展示，有利于初步掌握数据的分布和趋势。就像官网说的，，数据的清洗和过滤对模型起着至关重要的作用，通过facets对样本数据进行分析，可以尽早发现数据问题，例如缺失值过多，数据分布不均匀等，可以说是数据分析的第一步。<br>facets可以作为pandas库的辅助可视化工具，相信会事半功倍。<br><a href="https://pair-code.github.io/facets/" target="_blank" rel="noopener">官网</a><br><a href="https://github.com/PAIR-code/facets" target="_blank" rel="noopener">github</a><br><a href="https://zhuanlan.zhihu.com/p/35239326" target="_blank" rel="noopener">(知乎)介绍</a></p>
 
           
         
@@ -1010,8 +1265,9 @@
 <p><strong>删除分支</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d feature_x</span><br></pre></td></tr></table></figure></p>
 <p>-D : 强行删除没有被合并过的分支<br><strong>删除远程分支</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete [branch-name]</span><br><span class="line">git branch -dr [remote/branch]</span><br></pre></td></tr></table></figure></p>
 <p><strong>推送分支到远程仓库</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin &lt;branch&gt;</span><br></pre></td></tr></table></figure></p>
-<p><strong>查看文件、分支差异</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git diff &lt;filename&gt;</span><br><span class="line">git diff &lt;source_branch&gt; &lt;target_branch&gt;</span><br><span class="line">git diff HEAD -- &lt;filename&gt;  					查看工作区和版本库里面最新版本的区别</span><br></pre></td></tr></table></figure></p>
-<p><strong>列出分支</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本地：git branch</span><br><span class="line">远程：git branch -r</span><br><span class="line">所有：git branch -a</span><br></pre></td></tr></table></figure></p>
+<p><strong>查看文件、分支差异</strong><br><code>git diff</code>命令，不指定filename时，列出所有文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git diff &lt;filename&gt;						工作区和暂存区</span><br><span class="line">git diff &lt;branch_1&gt; &lt;branch_2&gt;			两个分支</span><br><span class="line">git diff --cached &lt;filename&gt;			暂存区和版本库最新版本</span><br><span class="line">git diff --cached &lt;commit&gt; &lt;filename&gt;	暂存区和版本库指定版本</span><br><span class="line">git diff &lt;commit&gt; &lt;filename&gt;			工作区和版本库指定版本</span><br><span class="line">git diff HEAD -- &lt;filename&gt;  			工作区和版本库里面最新版本（commit=HEAD）</span><br><span class="line">git diff &lt;commit&gt; &lt;commit&gt;				版本库两个版本</span><br></pre></td></tr></table></figure></p>
+<p>其中<code>&lt;commit&gt;</code>支持下列方式：<br><code>HEAD</code>        最经一次commit<br><code>HEAD^</code>        上一次提交<br><code>HEAD~100</code>    上100次提交<br>版本号<br><strong>列出分支</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本地：git branch</span><br><span class="line">远程：git branch -r</span><br><span class="line">所有：git branch -a</span><br></pre></td></tr></table></figure>
 <h2 id="3-撤销修改与版本回退"><a href="#3-撤销修改与版本回退" class="headerlink" title="3. 撤销修改与版本回退"></a>3. 撤销修改与版本回退</h2><p><strong>查看提交历史</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line">git log --stat</span><br></pre></td></tr></table></figure></p>
 <p>用以回退<br><strong>查看命令历史</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></p>
 <p>可以去未来<br><strong>撤销工作区改动</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- &lt;filename&gt;</span><br></pre></td></tr></table></figure></p>
@@ -1370,267 +1626,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/29/go语言关键字/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sylvia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sylvia's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/29/go语言关键字/" itemprop="url">go语言关键字</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-29T18:23:33+08:00">
-                2018-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="package"><a href="#package" class="headerlink" title="package"></a>package</h2><blockquote>
-<p> 指定.go文件属于哪个包</p>
-</blockquote>
-<ul>
-<li>在源文件非注释的第一行指定该.go文件属于哪一个包</li>
-<li>包名小写</li>
-<li>一个go应用程序的源文件可以属于不同的包</li>
-<li>一个go应用程序必须包含一个属于main的源文件<blockquote>
-<p>属于同一个包的源文件必须全部被一起编译，每个目录都只包含一个包<br>一个包即是编译时的一个单元<br>当代码修改或重新编译时，引用这个包的其他程序必须全部编译</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/28/ElasticSearch简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Sylvia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Sylvia's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/28/ElasticSearch简介/" itemprop="url">ElasticSearch简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-28T18:54:57+08:00">
-                2018-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>es是为<strong>提高搜索效率</strong>而存在的一种分布式引擎，它支持文档型数据，采用json形式保存，其中的概念和关系型数据库的对应关系为：</p>
-<blockquote>
-<p>关系数据库 ⇒ 数据库(Database) ⇒ 表(Table) ⇒ 行(Row) ⇒ 列(Columns)<br>Elasticsearch ⇒ 索引(Index) ⇒ 类型(Type) ⇒ 文档(Document) ⇒ 字段(Fields)</p>
-</blockquote>
-<p>关系型数据库采用<strong>树</strong>结构存储，因为二叉树的查找复杂度为logN，并且在插入时不用移动全部节点，可以同时兼顾查询和插入的性能</p>
-<p>es采用<strong>倒排索引</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1676,7 +1676,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
